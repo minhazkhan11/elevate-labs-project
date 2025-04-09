@@ -23,11 +23,13 @@ pipeline {
         }
 
         stage('Run Tests') {
-            steps {
-                echo "Running tests..."
-                sh 'docker run --rm myapp:latest /usr/share/nginx/html/run-tests.sh'
-             }
-         } 
+    steps {
+        echo 'Running tests...'
+        sh "docker run --rm myapp:latest ./run-tests.sh"
+
+            }
+
+        } 
         stage('Push Docker Image') {
             steps {
                 echo 'Pushing Docker image to Docker Hub...'
